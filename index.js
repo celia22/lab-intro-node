@@ -5,18 +5,18 @@ class SortedList {
   }
 
   add(item) {
+    this.length++;
     this.items.push(item);
     this.items.sort((a, b) => a - b);
   }
 
 
   get(pos) {
-    this.items.forEach((item, pos) => {
-      if (!pos) {
-        throw new Error('OutOfBounds');
-      }
-      return item(pos)
-    })
+    if (pos > this.items.length) {
+      throw new Error('OutOfBounds');
+    }
+
+    return this.items[pos]
   }
 
   max() {
