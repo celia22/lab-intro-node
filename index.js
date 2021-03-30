@@ -10,15 +10,6 @@ class SortedList {
   }
 
 
-  // deleteBrains() {
-  //   generatedBrain.forEach((item, index) => {
-  //     if (item.y > canvas.height) {
-  //       generatedBrain.splice(item, index);
-  //     }
-  //   });
-  // }
-
-
   get(pos) {
     this.items.forEach((item, pos) => {
       if (!pos) {
@@ -26,7 +17,6 @@ class SortedList {
       }
       return item(pos)
     })
-
   }
 
   max() {
@@ -45,9 +35,24 @@ class SortedList {
     return min
   }
 
-  sum() { }
+  sum() {
+    let result = 0;
+    this.items.forEach(item => {
+      result += item
+    })
+    return result
+  }
 
-  avg() { }
+  avg() {
+    if (this.items.length === 0) {
+      throw new Error('EmptySortedList');
+    }
+    let av = 0;
+    this.items.forEach(item => {
+      av += item
+    })
+    return av / this.items.length
+  }
 }
 
 module.exports = SortedList;
